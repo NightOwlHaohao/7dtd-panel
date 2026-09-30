@@ -7,37 +7,40 @@ body:
       value: |
         感谢反馈！提交前请确认已经是最新版本。**安全问题请不要在这里提交**，见 SECURITY.md。
         请不要贴出密码、Telnet 密码、令牌或服务器公网 IP。
+
+        Thanks! Please check you are on the latest version first. **Do not report security problems here** (see SECURITY.md),
+        and do not paste passwords, the Telnet password, tokens or your server's public IP.
   - type: input
     id: version
     attributes:
-      label: 面板版本
-      description: 侧栏底部或“面板”页显示的版本，例如 v1.1.0
+      label: 面板版本 / Panel version
+      description: 侧栏底部或“面板”页显示的版本 / shown at the bottom of the sidebar or on the Panel page, e.g. v1.1.0
     validations:
       required: true
   - type: input
     id: game
     attributes:
-      label: 游戏服务器版本
-      description: 例如 V2.4-b7（顶栏或概览页可以看到）
+      label: 游戏服务器版本 / Game server version
+      description: 例如 / e.g. V2.4-b7（顶栏或概览页 / top bar or Overview）
   - type: dropdown
     id: mode
     attributes:
-      label: 运行方式
+      label: 运行方式 / How the panel runs
       options:
-        - 控制台窗口（双击 panel.exe）
-        - Windows 服务
-        - 不确定
+        - 控制台窗口（双击 panel.exe）/ Console window (double-clicked panel.exe)
+        - Windows 服务 / Windows service
+        - 不确定 / Not sure
   - type: textarea
     id: what
     attributes:
-      label: 发生了什么
-      description: 你做了什么操作、期望看到什么、实际看到了什么
+      label: 发生了什么 / What happened
+      description: 你做了什么、期望什么、实际看到什么 / what you did, what you expected, what you saw
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: 复现步骤
+      label: 复现步骤 / Steps to reproduce
       placeholder: |
         1. 打开“……”页
         2. 点击“……”
@@ -45,6 +48,6 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: 日志
-      description: logs\panel.log 中相关的几行（请先删掉敏感信息）
+      label: 日志 / Log
+      description: logs\panel.log 中相关的几行，请先删掉敏感信息 / the relevant lines of logs\panel.log, with secrets removed
       render: text

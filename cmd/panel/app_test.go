@@ -33,15 +33,15 @@ func TestAppGETRoutesExist(t *testing.T) {
 }
 
 func TestEmbeddedShellWiresEveryPage(t *testing.T) {
-	page := string(readEmbedded(t, "web/index.html"))
+	page := string(readEmbedded(t, "index.html"))
 	for _, want := range []string{`id="main"`, `id="nav"`, `id="console-drawer"`, `id="confirm-dialog"`, `<script type="module" src="/js/main.js">`} {
 		if !strings.Contains(page, want) {
 			t.Errorf("index.html missing %s", want)
 		}
 	}
-	router := string(readEmbedded(t, "web/js/main.js"))
+	router := string(readEmbedded(t, "js/main.js"))
 	for _, id := range []string{"overview", "server", "players", "schedule", "config", "sandbox", "mods", "saves", "backups", "firewall", "panel"} {
-		readEmbedded(t, "web/js/pages/"+id+".js")
+		readEmbedded(t, "js/pages/"+id+".js")
 		if !strings.Contains(router, `id: "`+id+`"`) {
 			t.Errorf("router does not register page %q", id)
 		}
@@ -49,19 +49,19 @@ func TestEmbeddedShellWiresEveryPage(t *testing.T) {
 }
 
 func TestEmbeddedThemesAndLanguages(t *testing.T) {
-	tokens := string(readEmbedded(t, "web/css/tokens.css"))
+	tokens := string(readEmbedded(t, "css/tokens.css"))
 	for _, want := range []string{`:root[data-theme="dark"]`, `:not([data-theme="light"])`, "prefers-color-scheme: dark"} {
 		if !strings.Contains(tokens, want) {
 			t.Errorf("tokens.css missing %q", want)
 		}
 	}
 	for _, locale := range []string{"zh-CN", "zh-TW", "en"} {
-		readEmbedded(t, "web/js/locales/"+locale+".js")
+		readEmbedded(t, "js/locales/"+locale+".js")
 	}
 }
 
 func TestEmbeddedAssetsExcludeTests(t *testing.T) {
-	for _, name := range []string{"web/tests", "web/package.json"} {
+	for _, name := range []string{"tests", "package.json", "embed.go"} {
 		if _, err := web.ReadFile(name); err == nil {
 			t.Errorf("%s must not be embedded", name)
 		}

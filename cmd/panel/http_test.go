@@ -1456,7 +1456,7 @@ func TestServeReportsUpdaterCleanupFailure(t *testing.T) {
 
 func TestIndexReferencedAssetsAreServed(t *testing.T) {
 	a := newTestApp(t)
-	page, err := web.ReadFile("web/index.html")
+	page, err := web.ReadFile("index.html")
 	if err != nil {
 		t.Fatal(err)
 	}

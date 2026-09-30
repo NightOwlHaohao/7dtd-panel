@@ -7,7 +7,8 @@ Author: NightowlHaohao. License: **PolyForm Noncommercial 1.0.0** (no commercial
 
 Current release: **v1.1.0** (GitHub Release, built by `.github/workflows/release.yml`).
 Open work and ideas: **`docs/ROADMAP.md`** (read it before starting new work). User docs:
-`README.md` (short) and `docs/使用说明.md` (per page); developer docs: `docs/开发说明.md`.
+`README.md` / `README.en.md` (short) and `docs/user-guide.md` / `.en.md` (per page); developer docs:
+`docs/development.md` / `.en.md`. **Docs are bilingual**: Chinese file plus an `.en.md` twin — update both.
 The repository is public: never commit personal paths, e-mail addresses, build outputs or
 third-party binaries (e.g. NaiwaziBot).
 
@@ -33,11 +34,14 @@ GitHub MCP `actions_run_trigger` tool.
 
 ## Layout
 
+All Go code is `package main` in **`cmd/panel/`** (paths below are relative to it); the UI is in
+`web/`, embedded by `web/embed.go` (package `web`, `web.Files`). Build: `go build -o panel.exe ./cmd/panel`.
+
 | Area | Files |
 |---|---|
 | Entry, service mode | `main.go` (subcommands `service …`, `--console`), `service_windows.go` (`svc.Run`), `service_other.go` |
 | Service management | `servicectl.go` (API, lifecycle), `servicectl_windows.go` (SCM, DACL, UAC via ShellExecuteEx runas, double-click launcher), `servicectl_other.go` |
-| HTTP wiring, security, static files | `http.go` (Host/Origin/token checks, CSP, `go:embed` of `web/index.html web/favicon.svg web/css web/js`) |
+| HTTP wiring, security, static files | `http.go` (Host/Origin/token checks, CSP, serves `web.Files`) |
 | API handlers by area | `api_server.go`, `api_config.go` (config + sandbox), `api_mods.go`, `api_saves.go` (saves + backups), `api_firewall.go` |
 | Game process lifecycle | `server.go` (state machine: stopped/starting/running/stopping/stop_timeout/shutdown_failed/crashed), `winproc_windows.go` / `winproc_other.go` (process identity = PID + exe + start time) |
 | Telnet | `telnet.go` (single `login` helper for Command/Shutdown) |
@@ -61,7 +65,7 @@ GitHub MCP `actions_run_trigger` tool.
   fails on a missing key or placeholder mismatch. Controls that depend on server
   state use `data-requires="stopped|running|force"` and are gated in place by
   `applyGates()`; never re-render a form on status events (loses user input).
-  Design rules: `design-system/7dtd-panel/MASTER.md`.
+  Design rules: `docs/design-system/7dtd-panel/MASTER.md`.
 - **API errors** return `{code, message}`; the UI localizes by `code`
   (`error_<code>` keys in locales). Add a locale entry for new codes.
 - **Windows-specific code** lives in `*_windows.go` with a `*_other.go`

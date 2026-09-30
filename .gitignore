@@ -16,3 +16,4 @@
 # Local builds (go build without -o writes these to the repository root)
 /sevenpanel
 /7dtd-panel
+/panel

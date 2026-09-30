@@ -1,5 +1,7 @@
 # 使用说明
 
+简体中文 | [English](user-guide.en.md)
+
 本文是 [README](../README.md) 的详细版，按页面和功能介绍面板的行为。
 
 - [文件夹结构](#文件夹结构)

@@ -29,7 +29,7 @@ if (Test-Path $stage) { Remove-Item -LiteralPath $stage -Recurse -Force }
 New-Item -ItemType Directory -Force $stage | Out-Null
 
 $env:CGO_ENABLED = '0'
-& $go build -buildvcs=false -trimpath -ldflags "-s -w -X main.version=$version" -o (Join-Path $stage 'panel.exe') .
+& $go build -buildvcs=false -trimpath -ldflags "-s -w -X main.version=$version" -o (Join-Path $stage 'panel.exe') ./cmd/panel
 if ($LASTEXITCODE -ne 0) { throw "Go build failed: $LASTEXITCODE" }
 
 foreach ($file in 'README.md', 'README.txt', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'panel.json.example') {
