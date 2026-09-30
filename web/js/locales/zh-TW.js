@@ -2,6 +2,7 @@ export default {
   // Shell
   appName: "七日殺面板",
   appTagline: "本機伺服器管理",
+  sourceCode: "原始碼",
   author: "作者 NightowlHaohao",
   skipMain: "跳至主要內容",
   navLabel: "主導覽",

@@ -66,6 +66,6 @@ ModInfo.xml at the root (named after the ZIP). Mod ZIP expansion is limited to 1
 entries and must leave at least 1 GiB free on the destination disk.
 
 The console is lazy, bounded and redacts sensitive values before storing logs.
-Telnet accepts only restricted one-line commands. License: PolyForm Noncommercial 1.0.0 (see LICENSE) - free for
-noncommercial use; commercial use (for example by hosting providers) needs
-the author's permission. THIRD_PARTY_NOTICES.md records third-party licenses.
+Telnet accepts only restricted one-line commands. Copyright (C) 2026 NightowlHaohao. License: GNU AGPL-3.0 (see LICENSE);
+source code: https://github.com/NightOwlHaohao/7dtd-panel.
+THIRD_PARTY_NOTICES.md records third-party licenses.

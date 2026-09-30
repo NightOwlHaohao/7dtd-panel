@@ -61,5 +61,5 @@ that name on `main`. The workflow tests, builds, tags and creates the GitHub Rel
 ## Contributing
 
 Issues and pull requests are welcome. The project is licensed under
-[PolyForm Noncommercial 1.0.0](../LICENSE); by contributing you agree that your changes are
+[GNU AGPL-3.0](../LICENSE); by contributing you agree that your changes are
 released under the same licence.

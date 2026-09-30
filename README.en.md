@@ -72,11 +72,14 @@ NaiwaziBot is third-party freeware (not open source); this panel includes none o
 
 ## License
 
-This project uses the [PolyForm Noncommercial License 1.0.0](LICENSE):
+Copyright (C) 2026 NightowlHaohao
 
-- ✅ Free to use, change and share for **noncommercial purposes** such as personal use, community servers, study and research (keep the licence and copyright notice when sharing).
-- ❌ **No commercial use**, for example integration by server hosting or panel providers, selling it, or offering it as part of a paid service.
-- For a commercial licence, contact the author.
+This project is open source under the [GNU AGPL-3.0](LICENSE):
+
+- ✅ Anyone may use, change and share it for free, including commercially (server owners may take donations or sell VIP).
+- 📢 If you **distribute** a modified version, or let others **use a modified version over a network** (for example a
+  hosting provider offering a changed panel to its customers), you must publish its complete source under the same AGPL-3.0.
+- Keep the copyright and licence notices; the software comes without any warranty.
 
 This is a summary; the [LICENSE](LICENSE) text is authoritative. Third-party licences are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
