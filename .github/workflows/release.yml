@@ -1,0 +1,52 @@
+name: Release
+
+# Publishes a GitHub Release with the Windows build attached. Either:
+# - Actions -> Release -> Run workflow, and enter a version such as v1.0.0
+#   (the tag is created on the chosen branch), or
+# - push a version tag: git tag v1.0.0 && git push origin v1.0.0
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release, e.g. v1.0.0'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    env:
+      VERSION: ${{ github.event.inputs.version || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # tags are needed for the version stamp
+      - name: Check the version and tag the build
+        shell: bash
+        run: |
+          [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "version must look like v1.2.3, got '$VERSION'"; exit 1; }
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if git rev-parse -q --verify "refs/tags/$VERSION" >/dev/null; then echo "tag $VERSION already exists"; exit 1; fi
+            git tag "$VERSION" # local only, so build.ps1 stamps this version
+          fi
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Test and build (Windows PowerShell 5.1)
+        shell: powershell
+        run: ./build.ps1
+      - name: Package
+        shell: powershell
+        run: Compress-Archive -Path dist/release/* -DestinationPath "7dtd-panel-$env:VERSION-windows-x64.zip"
+      - name: Publish GitHub Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Creates the tag on this commit when it does not exist yet.
+          gh release create "$VERSION" "7dtd-panel-$VERSION-windows-x64.zip" \
+            --target "$GITHUB_SHA" --title "7DTD Panel $VERSION" --generate-notes

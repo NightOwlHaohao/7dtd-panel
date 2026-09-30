@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 保留此注释 -->
+<ServerSettings custom="preserve">
+  <property name="ServerName" value="旧服务器" />
+  <property name="TelnetPassword" value="不要泄露" />
+  <unknown flag="keep">未知参数</unknown>
+  <property name="SandboxCode" value="ABC" />
+</ServerSettings>

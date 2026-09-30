@@ -1,0 +1,50 @@
+name: 问题反馈 / Bug report
+description: 面板出现错误或行为不符合预期
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！提交前请确认已经是最新版本。**安全问题请不要在这里提交**，见 SECURITY.md。
+        请不要贴出密码、Telnet 密码、令牌或服务器公网 IP。
+  - type: input
+    id: version
+    attributes:
+      label: 面板版本
+      description: 侧栏底部或“面板”页显示的版本，例如 v1.1.0
+    validations:
+      required: true
+  - type: input
+    id: game
+    attributes:
+      label: 游戏服务器版本
+      description: 例如 V2.4-b7（顶栏或概览页可以看到）
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 运行方式
+      options:
+        - 控制台窗口（双击 panel.exe）
+        - Windows 服务
+        - 不确定
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 你做了什么操作、期望看到什么、实际看到了什么
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 打开“……”页
+        2. 点击“……”
+        3. 看到错误“……”
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志
+      description: logs\panel.log 中相关的几行（请先删掉敏感信息）
+      render: text

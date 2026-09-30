@@ -1,0 +1,18 @@
+/tools/
+/dist/
+/work/test-root/
+/*.exe
+/panel.json
+/server/
+/userdata/
+/backups/
+/cache/
+/logs/
+/.gocache/
+/.worktrees/
+/*-report.md
+/final-fix-*.md
+/.superpowers/
+# Local builds (go build without -o writes these to the repository root)
+/sevenpanel
+/7dtd-panel

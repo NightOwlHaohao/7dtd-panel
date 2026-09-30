@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  go:
+    name: Go (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so build.ps1 can derive the version
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Check formatting
+        if: runner.os == 'Linux'
+        run: test -z "$(gofmt -l .)"
+      - run: go vet ./...
+      - run: go test -race -count=1 ./...
+        if: runner.os == 'Linux'
+      - name: Test and build release (Windows PowerShell 5.1)
+        if: runner.os == 'Windows'
+        shell: powershell
+        env:
+          SEVENPANEL_SERVICE_TEST: '1' # the runner is elevated: install and remove a test service
+        run: ./build.ps1
+      - name: Check the built panel
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          if (!(Test-Path dist/release/panel.exe)) { throw 'panel.exe missing' }
+          Get-ChildItem -Recurse dist/release | Select-Object FullName, Length
+      - uses: actions/upload-artifact@v4
+        if: runner.os == 'Windows'
+        with:
+          name: 7dtd-panel-windows
+          path: dist/release
+
+  web:
+    name: Web UI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test
+        working-directory: web
