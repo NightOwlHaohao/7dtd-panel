@@ -2,4 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: 安全问题 / Security vulnerability
     url: https://github.com/NightOwlHaohao/7dtd-panel/security/advisories/new
-    about: 请私密报告，不要公开提交 Issue。
+    about: 请私密报告，不要公开提交 Issue。/ Please report privately, not in a public issue.

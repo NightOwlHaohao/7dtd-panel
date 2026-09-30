@@ -1,5 +1,7 @@
 # 七日杀本地管理面板（7DTD Panel）
 
+简体中文 | [English](README.en.md)
+
 作者：**NightowlHaohao**
 
 在 Windows 上管理 **七日杀（7 Days to Die）专用服务器** 的本地网页面板。一个 `panel.exe`，
@@ -50,8 +52,8 @@ Windows 可能提示“已保护你的电脑”（SmartScreen），因为程序�
 
 ## 文档
 
-- [使用说明](docs/使用说明.md)：每个页面和功能的详细说明（服务、防火墙、备份恢复、计划任务、Mod、SandboxCode 等）。
-- [开发说明](docs/开发说明.md)：自己编译、测试和发布。
+- [使用说明](docs/user-guide.md)：每个页面和功能的详细说明（服务、防火墙、备份恢复、计划任务、Mod、SandboxCode 等）。
+- [开发说明](docs/development.md)：自己编译、测试和发布。
 - [路线图](docs/ROADMAP.md)：已完成和计划中的功能。
 - [安全说明](SECURITY.md)：如何报告安全问题。
 

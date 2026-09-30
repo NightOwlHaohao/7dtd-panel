@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"crypto/rand"
-	"embed"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
@@ -17,10 +16,12 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	webui "sevenpanel/web"
 )
 
-//go:embed web/index.html web/favicon.svg web/css web/js
-var web embed.FS
+// web is the embedded browser UI (index.html, favicon.svg, css/, js/).
+var web = webui.Files
 
 type APIError struct {
 	Code    string `json:"code"`
@@ -348,7 +349,7 @@ func (a *App) static(w http.ResponseWriter, req *http.Request) {
 		a.error(w, http.StatusNotFound, "not_found", "资源不存在")
 		return
 	}
-	data, err := web.ReadFile("web/" + name)
+	data, err := web.ReadFile(name)
 	if err != nil {
 		a.error(w, http.StatusNotFound, "not_found", "资源不存在")
 		return

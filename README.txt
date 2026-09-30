@@ -1,8 +1,8 @@
 7 Days to Die Local Panel
 Author: NightowlHaohao
 
-For detailed Simplified Chinese instructions, open README.md and
-docs/使用说明.md at https://github.com/NightOwlHaohao/7dtd-panel
+Full documentation in English and Chinese: README.en.md / README.md and
+docs/user-guide.en.md at https://github.com/NightOwlHaohao/7dtd-panel
 
 Run panel.exe beside the server directory and use the loopback URL printed by
 the program. It binds to 127.0.0.1 by default.

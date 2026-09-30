@@ -5,16 +5,16 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: 想解决什么问题
-      description: 现在哪里不方便？
+      label: 想解决什么问题 / What problem should it solve
+      description: 现在哪里不方便？/ What is inconvenient today?
     validations:
       required: true
   - type: textarea
     id: idea
     attributes:
-      label: 希望的做法
+      label: 希望的做法 / Proposed solution
   - type: textarea
     id: other
     attributes:
-      label: 其他信息
-      description: 参考的其他面板、截图等
+      label: 其他信息 / Anything else
+      description: 参考的其他面板、截图等 / other panels, screenshots …
