@@ -45,8 +45,12 @@ func TestShutdownWakeupBecomesTerminalFailureAndStaysLocked(t *testing.T) {
 	probe := &verifiedFakeProcessProbe{fakeProcessProbe: &fakeProcessProbe{identity: ProcessIdentity{PID: 42, Exe: `C:\\server.exe`, Started: started}}, staysAlive: true}
 	m, paths := testManager(t, probe)
 	writeRecordedProcess(t, paths, persistedProcess{PID: 42, Exe: `C:\\server.exe`, Started: started})
-	m.shutdownTimeout, m.pollInterval = 20*time.Millisecond, time.Millisecond
-	m.poll = func(context.Context) (string, error) { return "0", nil }
+	m.shutdownTimeout, m.pollInterval = 200*time.Millisecond, time.Millisecond
+	// The game answers a poll that was in flight when shutdown was sent: the
+	// poll returns only after the shutdown command arrived, so the wake-up is
+	// seen deterministically rather than by a lucky race.
+	sent := make(chan struct{})
+	m.poll = func(context.Context) (string, error) { <-sent; return "0", nil }
 	m.StartPoller()
 	defer m.StopPoller()
 	client, peer := net.Pipe()
@@ -55,6 +59,7 @@ func TestShutdownWakeupBecomesTerminalFailureAndStaysLocked(t *testing.T) {
 		_, _ = peer.Write([]byte("Welcome> "))
 		buf := make([]byte, len("shutdown\r\n"))
 		_, _ = io.ReadFull(peer, buf)
+		close(sent)
 		_ = peer.Close()
 	}()
 	if err := m.Shutdown(context.Background(), TelnetClient{Dial: func(context.Context, string, string) (net.Conn, error) { return client, nil }}); !errors.Is(err, ErrShutdownTimeout) {
