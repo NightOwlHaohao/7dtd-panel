@@ -2,8 +2,8 @@
 
 Local web panel for running a **7 Days to Die dedicated server on Windows**. One Go
 program (`panel.exe`) with the web UI embedded; listens on `127.0.0.1` only.
-Author: NightowlHaohao. License: **PolyForm Noncommercial 1.0.0** (no commercial use; keep the
-`Required Notice:` line in LICENSE). The owner writes in Chinese — reply in Chinese.
+Author: NightowlHaohao. License: **GNU AGPL-3.0** (LICENSE is the unmodified FSF text;
+the sidebar links to the source, as AGPL section 13 expects for network use). The owner writes in Chinese — reply in Chinese.
 
 Current release: **v1.1.0** (GitHub Release, built by `.github/workflows/release.yml`).
 Open work and ideas: **`docs/ROADMAP.md`** (read it before starting new work). User docs:

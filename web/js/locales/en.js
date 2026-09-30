@@ -2,6 +2,7 @@ export default {
   // Shell
   appName: "7DTD Panel",
   appTagline: "Local server manager",
+  sourceCode: "Source",
   author: "By NightowlHaohao",
   skipMain: "Skip to main content",
   navLabel: "Main navigation",

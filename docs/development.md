@@ -58,4 +58,4 @@ cd web && node --test                        # 前端（Node 22，无第三方�
 ## 贡献
 
 欢迎提交 Issue 和 Pull Request。本项目使用
-[PolyForm Noncommercial 1.0.0](../LICENSE) 许可证：提交代码即表示你同意你的改动以同样的许可证发布。
+[GNU AGPL-3.0](../LICENSE) 许可证：提交代码即表示你同意你的改动以同样的许可证发布。

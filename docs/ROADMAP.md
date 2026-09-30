@@ -41,7 +41,7 @@
 
 ### 仓库公开准备
 
-许可证改为 PolyForm Noncommercial 1.0.0（禁止商用）；删除编译产物和旧的 AI 规划文档；Go 代码移到 `cmd/panel/`；
+许可证改为 GNU AGPL-3.0；删除编译产物和旧的 AI 规划文档；Go 代码移到 `cmd/panel/`；
 文档拆为 README / 使用说明 / 开发说明并提供中英双语；新增 SECURITY.md 和 Issue 模板。
 
 尚需在真机上确认：UAC 流程（安装并切换、双击时更新旧服务路径）、开机延迟自启后自动开服、

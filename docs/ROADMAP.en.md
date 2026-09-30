@@ -49,7 +49,7 @@ Last updated: 2026-09-30 (v1.1.0). Read [`CLAUDE.md`](../CLAUDE.md) before contr
 
 ### Preparing the public repository
 
-Licence changed to PolyForm Noncommercial 1.0.0 (no commercial use); build outputs and old AI planning
+Licence changed to GNU AGPL-3.0; build outputs and old AI planning
 notes removed; Go code moved to `cmd/panel/`; documentation split into README / user guide / development
 in Chinese and English; SECURITY.md and issue templates added.
 
