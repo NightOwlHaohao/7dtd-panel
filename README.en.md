@@ -70,6 +70,12 @@ right-click `panel.exe` → "Run as administrator", apply the rules, close it, t
 **Can I use NaiwaziBot?** Yes. Upload its ZIP on the Mods page; the Players page detects it and opens its web panel.
 NaiwaziBot is third-party freeware (not open source); this panel includes none of its files.
 
+## Sponsor
+
+The panel is free and open source forever. If it helps you, you can support its maintenance through
+[GitHub Sponsors](https://github.com/sponsors/NightOwlHaohao) (or the "Sponsor" button at the top of the
+repository). Sponsoring is voluntary and unlocks nothing — every feature is for everyone.
+
 ## License
 
 Copyright (C) 2026 NightowlHaohao

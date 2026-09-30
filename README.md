@@ -69,6 +69,11 @@ Windows 可能提示“已保护你的电脑”（SmartScreen），因为程序�
 **能用 NaiwaziBot 吗？** 能。在“Mod 管理”页上传它的 ZIP 即可安装，“玩家”页会检测到它并提供打开它后台的按钮。
 NaiwaziBot 是第三方的免费（非开源）软件，本面板不包含它的任何文件。
 
+## 赞助
+
+面板永久免费、开源。如果它帮到了你，欢迎通过 [GitHub Sponsors](https://github.com/sponsors/NightOwlHaohao)
+支持作者继续维护（仓库首页右上方的 “Sponsor” 按钮也可以）。赞助是自愿的，不影响任何功能。
+
 ## 许可证
 
 Copyright (C) 2026 NightowlHaohao
